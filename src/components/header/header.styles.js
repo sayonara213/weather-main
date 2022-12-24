@@ -1,21 +1,18 @@
 import styled from "styled-components";
-import {THEME} from "../../const/theme";
+import {theme} from "../../const/theme";
 
 
 export const HeaderWrap = styled.div`
-    width: 100%;
-    height: 100px;
+    width: 80px;
+    height: 896px;
   
     display: flex;
     align-items: center;
     justify-content: center;
   
-    background-color: ${THEME.colors.background};
-    border-radius: 20px;
+    background-color: ${theme.colors.background};
+    border-radius: ${theme.borderRadius.medium};
 `;
 
 export const HeaderText = styled.h1`
-    font-size: ${THEME.fontSize.large};
-    color: ${THEME.colors.black};
-  
 `;
