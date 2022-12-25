@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {CityList, InputButton, InputField, InputForm, InputWrap} from "./input.style";
-import {getCity} from "../../../service";
+import {getCity, getWeather} from "../../../service";
 import {CityItem} from "./city-item/city-item";
+import {useDispatch, useSelector} from "react-redux";
 
 export const Input = () => {
 
@@ -10,6 +11,8 @@ export const Input = () => {
     const [showCity, setShowCity] = useState(false)
 
     const [cityList, setCityList] = useState([])
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (city.length > 2) {
@@ -30,14 +33,17 @@ export const Input = () => {
         setCity(event.target.value)
     }
 
-    const handleShowCity = (city) => {
+    const handleShowCity = async (city) => {
         if(showCity === true) {
             setShowCity(false)
         }
         else {
             setShowCity(true)
         }
-        console.log(city.name + ', ' + city.latitude + ', ' + city.longitude)
+        await getWeather(city.latitude, city.longitude).then(res => {
+            dispatch({type: 'SET_WEATHER', payload: res.data})
+            dispatch({type: 'SET_CITY_INFO', payload: city})
+        })
     }
 
     return(

@@ -37,12 +37,10 @@ export const CityList = styled.div`
   padding: 20px 0;
   
   width: 100%;
-  background-color: ${theme.colors.white};
   display: flex;
   flex-direction: column;
   
   position: absolute;
   top: 50px;
-  
-  
+  overflow: hidden;
 `;

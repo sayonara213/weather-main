@@ -1,13 +1,21 @@
 import React from "react";
 import {TodayIcon, TodayItemWrap, TodayTemp, TodayTime} from "./today-item.styles";
-import {IMAGES} from "../../../../const/images";
+import {getWeatherIcon, IMAGES} from "../../../../const/images";
+import {useSelector} from "react-redux";
 
-export const TodayItem = () => {
+export const TodayItem = (props) => {
+
+    const weather = useSelector(state => state.cityWeather.hourly);
+
+    const getTime = (time) => {
+        return time.slice(11, 16);
+    }
+
     return(
         <TodayItemWrap>
-            <TodayTime>12:00 PM</TodayTime>
-            <TodayIcon src={IMAGES.rain}></TodayIcon>
-            <TodayTemp>23°</TodayTemp>
+            <TodayTime>{getTime(weather.time[props.weatherIndex])}</TodayTime>
+            <TodayIcon src={getWeatherIcon(weather.weathercode[props.weatherIndex], weather.time[props.weatherIndex])}></TodayIcon>
+            <TodayTemp>{`${parseInt(weather.temperature_2m[props.weatherIndex])}°`}</TodayTemp>
         </TodayItemWrap>
     );
 

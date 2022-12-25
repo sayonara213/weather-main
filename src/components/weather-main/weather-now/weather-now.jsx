@@ -7,17 +7,22 @@ import {
     WeatherNowWrap,
     WeatherTextWrap
 } from "./weather-now.styles";
-import {IMAGES} from "../../../const/images";
+import {getWeatherIcon, IMAGES} from "../../../const/images";
+import {useSelector} from "react-redux";
 
 export const WeatherNow = () => {
+
+    const weather = useSelector(state => state.cityWeather);
+    const city = useSelector(state => state.cityInfo);
+
     return(
         <WeatherNowWrap>
             <WeatherTextWrap>
-                <WeatherNowCity>Madrid</WeatherNowCity>
-                <WeatherNowRain>Chance of rain: 0%</WeatherNowRain>
-                <WeatherNowTemp>31°</WeatherNowTemp>
+                <WeatherNowCity>{city.name + ", " + city.country}</WeatherNowCity>
+                <WeatherNowRain>Wind speed: {weather.current_weather.windspeed} m/s</WeatherNowRain>
+                <WeatherNowTemp>{parseInt(weather.current_weather.temperature) + `°`}</WeatherNowTemp>
             </WeatherTextWrap>
-            <WeatherNowIcon src={IMAGES.sun}/>
+            <WeatherNowIcon src={getWeatherIcon(weather.current_weather.weathercode, weather.current_weather.time)}/>
         </WeatherNowWrap>
     );
 }

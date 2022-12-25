@@ -2,17 +2,32 @@ import styled from "styled-components";
 import {theme} from "../../../../const/theme";
 
 export const CityWrap = styled.div`
-  margin: 5px 0;
-  
   width: 50%;
   height: 50px;
   display: flex;
   align-items: center;
   
   background-color: ${theme.colors.background};
-  border-radius: ${theme.borderRadius.medium};
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    background-color: ${theme.colors.grey};
+  }
+  
+  cursor: pointer;
+  
+  border: 1px solid ${theme.colors.grey};
+  &:first-child {
+    border-radius: ${theme.borderRadius.medium} ${theme.borderRadius.medium} 0 0;
+  }
+  &:last-child {
+    border-radius: 0 0 ${theme.borderRadius.medium} ${theme.borderRadius.medium};
+  }
+  
 `;
 
 export const CityText = styled.p`
   margin: 0 15px;
+  
+  user-select: none;
 `;

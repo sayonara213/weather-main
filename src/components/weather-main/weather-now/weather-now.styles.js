@@ -20,21 +20,19 @@ export const WeatherTextWrap = styled.div`
 export const WeatherNowCity = styled.h1`
     margin: 0 0 10px 0;
     font-size: 40px;
+    color: ${theme.colors.text};
 `;
 
 export const WeatherNowRain = styled.p`
     margin: 0;
     font-size: 16px;
-    color: ${theme.colors.grey}
+    color: ${theme.colors.grey};
 `;
 
 export const WeatherNowTemp = styled.h2`
     margin: 10px 0;
     font-size: 70px;
-`;
-
-export const WeatherIconWrap = styled.div`
-    
+    color: ${theme.colors.text};
 `;
 
 export const WeatherNowIcon = styled.img`
