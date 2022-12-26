@@ -3,15 +3,51 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from "react-redux";
+import {createStore} from "redux";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const defaultState = {
+    cityWeather: {
+        current_weather: {},
+        hourly: {},
+        daily: {}
+    },
+    cityInfo: {}
+}
+
+const reducer = (state = defaultState, action) => {
+    switch (action.type) {
+        case 'SET_WEATHER':
+            return {...state, cityWeather: action.payload}
+        case 'SET_CITY_INFO':
+            return {...state, cityInfo: action.payload}
+        case 'SET_ADDITIONAL_DATA': {
+            return {
+                ...state,
+                cityWeather: {
+                    ...state.cityWeather,
+                    current_weather: {
+                        ...state.cityWeather.current_weather,
+                        additional_data: action.payload
+                    }
+                }
+            }
+        }
+        default:
+            return state
+    }
+}
+
+const store = createStore(reducer)
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <Provider store={store}>
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
