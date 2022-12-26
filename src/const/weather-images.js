@@ -4,19 +4,14 @@ import day_partly_cloudy from '../assets/images/day_partly_cloudy.png';
 import day_rain from '../assets/images/day_rain.png';
 import day_snow from '../assets/images/day_snow.png';
 import day_thunder from '../assets/images/day_thunder.png';
-import day_wind from '../assets/images/day_wind.png';
-import night_clear from '../assets/images/night_clear.png';
 import night_partly_cloudy from '../assets/images/night_partly_cloudy.png';
 import night_rain from '../assets/images/night_rain.png';
 import night_snow from '../assets/images/night_snow.png';
 import night_thunder from '../assets/images/night_thunder.png';
-import night_wind from '../assets/images/night_wind.png';
-import freezing from '../assets/images/freezing.png';
 import rain from '../assets/images/rain.png';
 import snow from '../assets/images/snow.png';
 import snow_showers from '../assets/images/snow_showers.png';
 import thunder from '../assets/images/thunder.png';
-import wind from '../assets/images/wind.png';
 
 export const convertTime = (time) => {
     return parseInt(time.slice(11, 13))
