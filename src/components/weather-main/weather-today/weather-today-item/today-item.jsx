@@ -1,6 +1,6 @@
 import React from "react";
 import {TodayIcon, TodayItemWrap, TodayTemp, TodayTime} from "./today-item.styles";
-import {getWeatherIcon, IMAGES} from "../../../../const/images";
+import {getWeatherIcon, WeatherImages} from "../../../../const/weather-images";
 import {useSelector} from "react-redux";
 
 export const TodayItem = (props) => {

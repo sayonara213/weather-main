@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {CityList, InputButton, InputField, InputForm, InputWrap} from "./input.style";
+import {CityList, InputField, InputForm, InputWrap} from "./input.style";
 import {getCity, getWeather} from "../../../service";
 import {CityItem} from "./city-item/city-item";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 
 export const Input = () => {
 
@@ -18,14 +18,12 @@ export const Input = () => {
         if (city.length > 2) {
             const delayRequest = setTimeout(async () => {
                 await getCity(city).then(res => {
-                    setCityList(res.data.results)
+                    if(Object.keys(res.data).length === 2) {
+                        setCityList(res.data.results)
+                    }
                 })
             }, 1000)
-            setShowCity(true);
             return () => clearTimeout(delayRequest)
-        }
-        else {
-            setCityList([]);
         }
     }, [city])
 
@@ -34,12 +32,7 @@ export const Input = () => {
     }
 
     const handleShowCity = async (city) => {
-        if(showCity === true) {
-            setShowCity(false)
-        }
-        else {
-            setShowCity(true)
-        }
+        setShowCity(false)
         await getWeather(city.latitude, city.longitude).then(res => {
             dispatch({type: 'SET_WEATHER', payload: res.data})
             dispatch({type: 'SET_CITY_INFO', payload: city})
@@ -55,7 +48,7 @@ export const Input = () => {
                     onMouseDown={() => setShowCity(true)}
                 ></InputField>
             </InputForm>
-            {cityList.length > 0 && showCity ?
+            {showCity ?
             <CityList>
                 {cityList.map((item, index) => (
                     <CityItem city={item} key={index} click={() => handleShowCity(item)}/>

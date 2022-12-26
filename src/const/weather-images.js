@@ -18,30 +18,12 @@ import snow_showers from '../assets/images/snow_showers.png';
 import thunder from '../assets/images/thunder.png';
 import wind from '../assets/images/wind.png';
 
-export const IMAGES = {
-    cloudy,
-    day_clear,
-    day_partly_cloudy,
-    day_rain,
-    day_snow,
-    day_thunder,
-    day_wind,
-    night_clear,
-    night_partly_cloudy,
-    night_rain,
-    night_snow,
-    night_thunder,
-    night_wind,
-    freezing,
-    rain,
-    snow,
-    thunder,
-    wind,
-    snow_showers,
+export const convertTime = (time) => {
+    return parseInt(time.slice(11, 13))
 }
 
-const convertTime = (time) => {
-    let hour = parseInt(time.slice(11, 13))
+const getDayTime = (time) => {
+    let hour = convertTime(time)
     if (hour >= 6 && hour < 18) {
         return 'day';
     } else {
@@ -50,63 +32,61 @@ const convertTime = (time) => {
 }
 
 export const getWeatherIcon = (weatherCode, time) => {
-    console.log(time)
-    const daytime = convertTime(time)
-    console.log(daytime);
+    const daytime = getDayTime(time)
 
     if(daytime === 'day'){
         switch (true) {
             case weatherCode >= 1 && weatherCode <= 3:
-                return IMAGES.day_partly_cloudy;
+                return day_partly_cloudy;
             case weatherCode >= 45 && weatherCode <= 57:
-                return IMAGES.cloudy;
+                return cloudy;
             case weatherCode === 61:
-                return IMAGES.day_rain;
+                return day_rain;
             case weatherCode >= 63 && weatherCode <= 65:
-                return IMAGES.rain;
+                return rain;
             case weatherCode >= 66 && weatherCode <= 67:
-                return IMAGES.snow;
+                return snow;
             case weatherCode >= 71 && weatherCode <= 75:
-                return IMAGES.day_snow;
+                return day_snow;
             case weatherCode === 77:
-                return IMAGES.snow;
+                return snow;
             case weatherCode >= 80 && weatherCode <= 82:
-                return IMAGES.snow_showers;
+                return snow_showers;
             case weatherCode >= 85 && weatherCode <= 86:
-                return IMAGES.snow;
+                return snow;
             case weatherCode === 95:
-                return IMAGES.day_thunder;
+                return day_thunder;
             case weatherCode >= 96 && weatherCode <= 99:
-                return IMAGES.thunder;
+                return thunder;
             default:
-                return IMAGES.day_clear;
+                return day_clear;
         }
     } else {
         switch (true) {
             case weatherCode >= 1 && weatherCode <= 3:
-                return IMAGES.night_partly_cloudy;
+                return night_partly_cloudy;
             case weatherCode >= 45 && weatherCode <= 57:
-                return IMAGES.cloudy;
+                return cloudy;
             case weatherCode === 61:
-                return IMAGES.night_rain;
+                return night_rain;
             case weatherCode >= 63 && weatherCode <= 65:
-                return IMAGES.rain;
+                return rain;
             case weatherCode >= 66 && weatherCode <= 67:
-                return IMAGES.snow;
+                return snow;
             case weatherCode >= 71 && weatherCode <= 75:
-                return IMAGES.night_snow;
+                return night_snow;
             case weatherCode === 77:
-                return IMAGES.snow;
+                return snow;
             case weatherCode >= 80 && weatherCode <= 82:
-                return IMAGES.snow_showers;
+                return snow_showers;
             case weatherCode >= 85 && weatherCode <= 86:
-                return IMAGES.snow;
+                return snow;
             case weatherCode === 95:
-                return IMAGES.night_thunder;
+                return night_thunder;
             case weatherCode >= 96 && weatherCode <= 99:
-                return IMAGES.thunder;
+                return thunder;
             default:
-                return IMAGES.day_clear;
+                return day_clear;
         }
     }
 }

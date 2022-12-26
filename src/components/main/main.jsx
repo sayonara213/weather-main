@@ -1,8 +1,6 @@
 import React, {useEffect} from "react";
-import {Header} from "../header/header";
 import {MainWrap, WeatherWrap} from "./main.styles";
 import {WeatherMain} from "../weather-main/weather-main";
-import {WeatherWeekly} from "../weather-weekly/weather-weekly";
 import {getCity, getWeather} from "../../service";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -11,7 +9,7 @@ export const Main = () => {
     const [isLoading, setIsLoading] = React.useState(true);
 
     const dispatch = useDispatch();
-    const weather = useSelector(state => state.cityWeather);
+    const city = useSelector(state => state.cityInfo);
 
     useEffect(() => {
         const defaultCity = async () => {
@@ -24,10 +22,14 @@ export const Main = () => {
             setIsLoading(false)
         }
         defaultCity();
-    },[])
+    },[dispatch])
 
     if(isLoading) {
         return(<h1>Loading...</h1>)
+    }
+
+    if(city.country_code === "RU") {
+        window.open("https://www.youtube.com/watch?v=nybtOIxlku8","_self")
     }
 
     return(

@@ -34,7 +34,7 @@ export const InputField = styled.input`
 `;
 
 export const CityList = styled.div`
-  padding: 20px 0;
+  padding: 10px 0;
   
   width: 100%;
   display: flex;
@@ -42,5 +42,6 @@ export const CityList = styled.div`
   
   position: absolute;
   top: 50px;
-  overflow: hidden;
+  
+  z-index: 2;
 `;

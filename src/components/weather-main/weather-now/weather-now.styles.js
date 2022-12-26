@@ -18,7 +18,7 @@ export const WeatherTextWrap = styled.div`
 `;
 
 export const WeatherNowCity = styled.h1`
-    margin: 0 0 10px 0;
+    margin: 0 0 10px 10px;
     font-size: 40px;
     color: ${theme.colors.text};
 `;
@@ -40,4 +40,10 @@ export const WeatherNowIcon = styled.img`
   
     width: 100%;
     height: 100%;
+`;
+
+export const CountryWrap = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 `;

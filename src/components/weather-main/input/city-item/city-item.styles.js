@@ -2,6 +2,8 @@ import styled from "styled-components";
 import {theme} from "../../../../const/theme";
 
 export const CityWrap = styled.div`
+  padding: 0 15px;
+  
   width: 50%;
   height: 50px;
   display: flex;
@@ -16,7 +18,6 @@ export const CityWrap = styled.div`
   
   cursor: pointer;
   
-  border: 1px solid ${theme.colors.grey};
   &:first-child {
     border-radius: ${theme.borderRadius.medium} ${theme.borderRadius.medium} 0 0;
   }
