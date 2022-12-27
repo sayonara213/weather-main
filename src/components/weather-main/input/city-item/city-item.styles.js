@@ -9,26 +9,26 @@ export const CityWrap = styled.div`
   display: flex;
   align-items: center;
   
-  background-color: ${theme.colors.background};
+  background-color: ${props => props.theme.colors.background};
   overflow: hidden;
   transition: 0.2s ease-in-out;
   &:hover {
-    background-color: ${theme.colors.grey};
+    background-color: ${props => props.theme.colors.grey};
   }
   
   cursor: pointer;
   
   &:first-child {
-    border-radius: ${theme.borderRadius.medium} ${theme.borderRadius.medium} 0 0;
+    border-radius: ${props => props.theme.borderRadius.medium} ${props => props.theme.borderRadius.medium} 0 0;
   }
   &:last-child {
-    border-radius: 0 0 ${theme.borderRadius.medium} ${theme.borderRadius.medium};
+    border-radius: 0 0 ${props => props.theme.borderRadius.medium} ${props => props.theme.borderRadius.medium};
   }
   
 `;
 
 export const CityText = styled.p`
   margin: 0 15px;
-  
+  color: ${props => props.theme.colors.text};
   user-select: none;
 `;

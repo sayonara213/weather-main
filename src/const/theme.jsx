@@ -3,10 +3,20 @@ import main from "../assets/fonts/AmsiProNormal-Bold.ttf"
 import {normalize} from "./normalize";
 
     export const COLORS ={
-        background: "#eaecef",
-        text: "#202b3b",
-        white: "#f5f5f5",
-        grey: "#9399a2"
+        light: {
+            background: "#eaecef",
+            text: "#202b3b",
+            document: "#f5f5f5",
+            grey: "#9399a2",
+            border: "#c7c7c7"
+        },
+        dark: {
+            background: "#151310",
+            text: "#FFFFFF",
+            document: "#0a0a0a",
+            grey: "#6d665d",
+            border: "#373737"
+        }
     }
 
     export const FONT_SIZE = {
@@ -28,29 +38,35 @@ import {normalize} from "./normalize";
         large: "20px",
     }
 
-    export const theme = {
-        colors: COLORS,
+    export const light = {
+        colors: COLORS.light,
+        fontSize: FONT_SIZE,
+        fontWeight: FONT_WEIGHT,
+        borderRadius: BORDER_RADIUS
+    }
+    export const dark = {
+        colors: COLORS.dark,
         fontSize: FONT_SIZE,
         fontWeight: FONT_WEIGHT,
         borderRadius: BORDER_RADIUS
     }
 
 const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${props => props.theme === "light" ? light.colors.document : dark.colors.document};
+  }
   @font-face {
     font-family: "bold";
     src: url(${main});
   }
   ${normalize}
-
-  body {
-    min-width: fit-content;
-  }
 `;
 
-export const Theme = ({ children }) => {
+export const Theme = ({ children, theme }) => {
+    console.log()
     return (
-        <ThemeProvider theme={Theme}>
-            <GlobalStyle />
+        <ThemeProvider theme={theme === "light" ? light : dark }>
+            <GlobalStyle theme={theme}/>
             {children}
         </ThemeProvider>
     );

@@ -8,8 +8,8 @@ export const WeatherWeeklyWrap = styled.div`
     flex-direction: column;
     justify-content: space-between;
     width: 30%;
-    height: 900px;
+    height: 860px;
 
-    border-radius: ${theme.borderRadius.medium};
-    background-color: ${theme.colors.background};
+    border-radius: ${props => props.theme.borderRadius.medium};
+    background-color: ${props => props.theme.colors.background};
 `;

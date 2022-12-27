@@ -9,8 +9,8 @@ export const InputWrap = styled.div`
   
   position: relative;
   
-  background-color: ${theme.colors.background};
-  border-radius: ${theme.borderRadius.medium};
+  background-color: ${props => props.theme.colors.background};
+  border-radius: ${props => props.theme.borderRadius.medium};
 `;
 
 export const InputForm = styled.form`
@@ -26,11 +26,12 @@ export const InputForm = styled.form`
 export const InputField = styled.input`
   width: 100%;
   
-  background-color: ${theme.colors.background};
+  background-color: ${props => props.theme.colors.background};
   border: none;
   outline: none;
 
-  font-size: ${theme.fontSize.small};
+  font-size: ${props => props.theme.fontSize.small};
+  color: ${props => props.theme.colors.text};
 `;
 
 export const CityList = styled.div`
@@ -42,6 +43,5 @@ export const CityList = styled.div`
   
   position: absolute;
   top: 50px;
-  
   z-index: 2;
 `;

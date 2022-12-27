@@ -4,13 +4,17 @@ import {WeatherMain} from "../weather-main/weather-main";
 import {getCity, getWeather} from "../../service";
 import {useDispatch, useSelector} from "react-redux";
 import {WeatherWeekly} from "../weather-weekly/weather-weekly";
+import {Header} from "../header/header";
+import {Theme} from "../../const/theme";
 
 export const Main = () => {
 
     const [isLoading, setIsLoading] = React.useState(true);
+    const [theme, setTheme] = React.useState("dark");
 
     const dispatch = useDispatch();
     const city = useSelector(state => state.cityInfo);
+
 
     useEffect(() => {
         const defaultCity = async () => {
@@ -33,11 +37,21 @@ export const Main = () => {
         window.open("https://www.youtube.com/watch?v=nybtOIxlku8","_self")
     }
 
+    const handleTheme = () => {
+        if(theme === "light") {
+            setTheme("dark");
+        } else {
+            setTheme("light");
+        }
+    }
+
     return(
-        <WeatherWrap>
-            {/*<Header/>*/}
-            <WeatherMain/>
-            <WeatherWeekly/>
-        </WeatherWrap>
+        <Theme theme={theme}>
+            <WeatherWrap>
+                <Header click={handleTheme} theme={theme}/>
+                <WeatherMain/>
+                <WeatherWeekly/>
+            </WeatherWrap>
+        </Theme>
     );
 }

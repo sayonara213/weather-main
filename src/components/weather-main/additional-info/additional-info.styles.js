@@ -16,9 +16,10 @@ export const TextWrap = styled.div`
 
 export const AirTextBig = styled.h1`
   margin: 20px 0;
+  color: ${props => props.theme.colors.text}
 `;
 
 export const AirTextSmall = styled.p`
-    color: ${theme.colors.grey};
-    font-size: ${theme.fontSize.medium};
+    color: ${props => props.theme.colors.grey};
+    font-size: ${props => props.theme.fontSize.medium};
 `;

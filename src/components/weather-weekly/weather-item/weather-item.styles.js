@@ -12,7 +12,8 @@ export const WeekDayWeather = styled.div`
 
 export const WeekDay = styled.p`
     margin: 0;
-    font-size: ${theme.fontSize.small}
+    font-size: ${props => props.theme.fontSize.small};
+    color: ${props => props.theme.colors.text};
 `;
 
 export const TempWrap = styled.div`
@@ -23,8 +24,8 @@ export const TempWrap = styled.div`
 
 export const Temperature = styled.p`
     margin: 0;
-    font-size: ${theme.fontSize.small};
-    color: ${theme.colors.grey};
+    font-size: ${props => props.theme.fontSize.small};
+    color: ${props => props.theme.colors.grey};
 `;
 
 export const WeatherIcon = styled.img`
