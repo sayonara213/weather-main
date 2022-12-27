@@ -7,8 +7,8 @@ export const WeatherNowWrap = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 90%;
-    height: 200px;
 `;
 
 export const WeatherTextWrap = styled.div`
@@ -37,9 +37,9 @@ export const WeatherNowTemp = styled.h2`
 
 export const WeatherNowIcon = styled.img`
     object-fit: contain;
-  
-    width: 100%;
-    height: 100%;
+    width: auto;
+    max-width: 230px;
+    height: auto;
 `;
 
 export const CountryWrap = styled.div`

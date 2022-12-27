@@ -3,7 +3,7 @@ import {theme} from "../../../const/theme";
 
 export const InputWrap = styled.div`
   width: 100%;
-  height: 50px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   

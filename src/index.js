@@ -23,18 +23,6 @@ const reducer = (state = defaultState, action) => {
             return {...state, cityWeather: action.payload}
         case 'SET_CITY_INFO':
             return {...state, cityInfo: action.payload}
-        case 'SET_ADDITIONAL_DATA': {
-            return {
-                ...state,
-                cityWeather: {
-                    ...state.cityWeather,
-                    current_weather: {
-                        ...state.cityWeather.current_weather,
-                        additional_data: action.payload
-                    }
-                }
-            }
-        }
         default:
             return state
     }

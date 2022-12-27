@@ -3,6 +3,7 @@ import {MainWrap, WeatherWrap} from "./main.styles";
 import {WeatherMain} from "../weather-main/weather-main";
 import {getCity, getWeather} from "../../service";
 import {useDispatch, useSelector} from "react-redux";
+import {WeatherWeekly} from "../weather-weekly/weather-weekly";
 
 export const Main = () => {
 
@@ -33,12 +34,10 @@ export const Main = () => {
     }
 
     return(
-        <MainWrap>
-            <WeatherWrap>
-                {/*<Header/>*/}
-                <WeatherMain/>
-                {/*<WeatherWeekly/>*/}
-            </WeatherWrap>
-        </MainWrap>
+        <WeatherWrap>
+            {/*<Header/>*/}
+            <WeatherMain/>
+            <WeatherWeekly/>
+        </WeatherWrap>
     );
 }

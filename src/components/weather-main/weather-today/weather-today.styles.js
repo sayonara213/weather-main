@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {theme} from "../../../const/theme";
 
 export const SectionWrap = styled.div`
-  margin: 10px 0;
+  margin: 10px 0 0 0;
   width: 100%;
   
   background-color: ${theme.colors.background};

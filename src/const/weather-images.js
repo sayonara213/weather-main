@@ -18,6 +18,10 @@ export const convertTime = (time) => {
 }
 
 const getDayTime = (time) => {
+    if(time === ""){
+        return "day";
+    }
+
     let hour = convertTime(time)
     if (hour >= 6 && hour < 18) {
         return 'day';
