@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {theme} from "../../../../const/theme";
+import {theme} from "../../../../constants/theme";
 
 export const CityWrap = styled.div`
   padding: 0 15px;
@@ -31,4 +31,5 @@ export const CityText = styled.p`
   margin: 0 15px;
   color: ${props => props.theme.colors.text};
   user-select: none;
+  font-family: ${props => props.theme.font.bold};
 `;

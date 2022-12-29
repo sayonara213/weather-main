@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {theme} from "../../const/theme";
+import {theme} from "../../constants/theme";
 
 export const WeatherMainWrap = styled.div`
     margin: 0 10px;
@@ -8,5 +8,7 @@ export const WeatherMainWrap = styled.div`
     flex-direction: column;
     align-items: center;
     width: 70%;
-    height: 900px;
+    @media (max-width: 992px) {
+      width: 100%;
+    }
 `;

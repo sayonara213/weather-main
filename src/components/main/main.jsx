@@ -1,54 +1,56 @@
-import React, {useEffect} from "react";
-import {MainWrap, WeatherWrap} from "./main.styles";
+import React, {useEffect, useState} from "react";
+import {WeatherWrap} from "./main.styles";
 import {WeatherMain} from "../weather-main/weather-main";
-import {getCity, getWeather} from "../../service";
+import {getCity, getUserCity, getWeather} from "../../service";
 import {useDispatch, useSelector} from "react-redux";
 import {WeatherWeekly} from "../weather-weekly/weather-weekly";
 import {Header} from "../header/header";
-import {Theme} from "../../const/theme";
+import {Theme} from "../../constants/theme";
 
 export const Main = () => {
 
-    const [isLoading, setIsLoading] = React.useState(true);
-    const [theme, setTheme] = React.useState("dark");
+    const [isLoading, setIsLoading] = useState(true);
+    const [theme, setTheme] = useState("dark");
 
     const dispatch = useDispatch();
     const city = useSelector(state => state.cityInfo);
 
-
-    useEffect(() => {
-        const defaultCity = async () => {
-            await getWeather(49.83826, 24.02324).then(res => {
-                dispatch({type: 'SET_WEATHER', payload: res.data})
-            })
-            await getCity("Lviv").then(res => {
+    const defaultCity = async () => {
+        await getUserCity().then(async (cityInfo) => {
+            await getCity(cityInfo.data.city).then(res => {
                 dispatch({type: 'SET_CITY_INFO', payload: res.data.results[0]})
             })
-            setIsLoading(false)
-        }
-        defaultCity();
-    },[dispatch])
-
-    if(isLoading) {
-        return(<h1>Loading...</h1>)
+            await getWeather(cityInfo.data.latitude, cityInfo.data.longitude).then(res => {
+                dispatch({type: 'SET_WEATHER', payload: res.data})
+            })
+        })
+        setIsLoading(false)
     }
 
-    if(city.country_code === "RU") {
-        window.open("https://www.youtube.com/watch?v=nybtOIxlku8","_self")
+    useEffect(() => {
+        defaultCity();
+    }, [])
+
+    if (isLoading) {
+        return (<h1>Loading...</h1>)
+    }
+
+    if (city.country_code === "RU") {
+        window.open("https://www.youtube.com/watch?v=nybtOIxlku8", "_self")
     }
 
     const handleTheme = () => {
-        if(theme === "light") {
+        if (theme === "light") {
             setTheme("dark");
         } else {
             setTheme("light");
         }
     }
 
-    return(
+    return (
         <Theme theme={theme}>
             <WeatherWrap>
-                <Header click={handleTheme} theme={theme}/>
+                <Header themeChange={handleTheme} theme={theme} location={defaultCity}/>
                 <WeatherMain/>
                 <WeatherWeekly/>
             </WeatherWrap>

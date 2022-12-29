@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getCity = async (city) => {
     try {
-        return  await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${city}`)
+        return await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${city}`)
     } catch (err) {
         console.log(err);
     }
@@ -16,3 +16,11 @@ export const getWeather = async (lat, lon) => {
     }
 }
 
+export const getUserCity = async () => {
+    try {
+        return await axios.get(`https://ipapi.co/json/`)
+    } catch (err) {
+        console.log(err);
+        alert("Turn off adblock to get your location")
+    }
+}

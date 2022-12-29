@@ -6,7 +6,7 @@ import {AdditionalInfo} from "./additional-info/additional-info";
 import {WeatherToday} from "./weather-today/weather-today";
 
 export const WeatherMain = () => {
-    return(
+    return (
         <WeatherMainWrap>
             <Input/>
             <WeatherNow/>

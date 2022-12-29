@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {theme} from "../../../../const/theme";
+import {theme} from "../../../../constants/theme";
 
 export const TodayItemWrap = styled.div`
     margin-bottom: 30px;
@@ -19,6 +19,7 @@ export const TodayTime = styled.p`
   font-size: ${props => props.theme.fontSize.medium};
   font-weight: ${props => props.theme.fontWeight.bold};
   color: ${props => props.theme.colors.grey};
+  font-family: ${props => props.theme.font.bold};
 `;
 
 export const TodayIcon = styled.img`
@@ -32,4 +33,5 @@ export const TodayTemp = styled.p`
   font-size: ${props => props.theme.fontSize.large};
   font-weight: ${props => props.theme.fontWeight.bold};
   color: ${props => props.theme.colors.text};
+  font-family: ${props => props.theme.font.bold};
 `;
