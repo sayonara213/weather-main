@@ -2,18 +2,17 @@ import styled from "styled-components";
 import {theme} from "../../../constants/theme";
 
 export const WeekDayWeather = styled.div`
-  margin: 0;
-
+  margin: 0 20px 20px 0;
+  
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
   @media (max-width: 992px) {
-    margin-bottom: 30px;
     flex-direction: column;
 
-    margin-right: -2px;
+    margin: 0 -2px 30px 0;
     border-right: 1px solid ${props => props.theme.colors.border};
   }
 `;
@@ -41,6 +40,14 @@ export const WeatherIcon = styled.img`
 
 export const AdaptContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+`;
+
+export const WeekDate = styled.p`
+  margin-top: 5px;
+  
+  font-size: ${props => props.theme.fontSize.small};
+  color: ${props => props.theme.colors.grey};
+  font-family: ${props => props.theme.font.bold};
 `;

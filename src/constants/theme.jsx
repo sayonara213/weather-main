@@ -67,6 +67,7 @@ const GlobalStyle = createGlobalStyle`
 
   ${normalize}
   ${reset}
+  
   body {
     transition: 250ms;
     background-color: ${props => props.theme === "light" ? light.colors.document : dark.colors.document};
@@ -75,8 +76,8 @@ const GlobalStyle = createGlobalStyle`
 
 export const Theme = ({children, theme}) => {
     return (
-        <ThemeProvider theme={theme === "light" ? light : dark}>
-            <GlobalStyle theme={theme}/>
+        <ThemeProvider theme={theme ? light : dark}>
+            <GlobalStyle theme={theme ? "light" : "dark"}/>
             {children}
         </ThemeProvider>
     );

@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 
 export const TodayItem = (props) => {
 
-    const weather = useSelector(state => state.cityWeather.hourly);
+    const weather = useSelector(state => state.weather.cityWeather.hourly);
 
     const getTime = (time) => {
         return time.slice(11, 16);

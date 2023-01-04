@@ -7,7 +7,7 @@ export const WeatherWrap = styled.div`
   flex-direction: row;
   justify-content: center;
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1500px) {
     padding: 10px 100px;
   }
   @media (max-width: 992px) {

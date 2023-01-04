@@ -6,25 +6,28 @@ import {useDispatch, useSelector} from "react-redux";
 import {WeatherWeekly} from "../weather-weekly/weather-weekly";
 import {Header} from "../header/header";
 import {Theme} from "../../constants/theme";
+import {setCityInfo} from "../../redux/citySlice";
+import {setWeather} from "../../redux/weatherSlice";
 
 export const Main = () => {
 
     const [isLoading, setIsLoading] = useState(true);
-    const [theme, setTheme] = useState("dark");
 
     const dispatch = useDispatch();
-    const city = useSelector(state => state.cityInfo);
+    const city = useSelector(state => state.city.cityInfo);
+    const themeNow = useSelector(state => state.settings.lightTheme);
+    const temperature = useSelector(state => state.settings.celsius);
 
     const defaultCity = async () => {
         await getUserCity().then(async (cityInfo) => {
             await getCity(cityInfo.data.city).then(res => {
-                dispatch({type: 'SET_CITY_INFO', payload: res.data.results[0]})
+                dispatch(setCityInfo(res.data.results[0]))
             })
-            await getWeather(cityInfo.data.latitude, cityInfo.data.longitude).then(res => {
-                dispatch({type: 'SET_WEATHER', payload: res.data})
+            await getWeather(cityInfo.data.latitude, cityInfo.data.longitude, temperature).then(res => {
+                dispatch(setWeather(res.data))
             })
+            setIsLoading(false)
         })
-        setIsLoading(false)
     }
 
     useEffect(() => {
@@ -39,18 +42,10 @@ export const Main = () => {
         window.open("https://www.youtube.com/watch?v=nybtOIxlku8", "_self")
     }
 
-    const handleTheme = () => {
-        if (theme === "light") {
-            setTheme("dark");
-        } else {
-            setTheme("light");
-        }
-    }
-
     return (
-        <Theme theme={theme}>
+        <Theme theme={themeNow}>
             <WeatherWrap>
-                <Header themeChange={handleTheme} theme={theme} location={defaultCity}/>
+                <Header location={defaultCity}/>
                 <WeatherMain/>
                 <WeatherWeekly/>
             </WeatherWrap>

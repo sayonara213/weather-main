@@ -179,4 +179,8 @@ export const normalize = css`
   [hidden] {
     display: none;
   }
+  
+  p {
+    user-select: none;
+  }
 `;

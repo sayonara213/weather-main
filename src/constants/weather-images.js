@@ -86,6 +86,35 @@ const getIsDay = (time) => {
     return hour >= 6 && hour < 18;
 };
 
+export const getDirection = (deg) => {
+    if (deg > 337.5) return 'N';
+    if (deg > 292.5) return 'NW';
+    if (deg > 247.5) return 'W';
+    if (deg > 202.5) return 'SW';
+    if (deg > 157.5) return 'S';
+    if (deg > 122.5) return 'SE';
+    if (deg > 67.5) return 'E';
+    if (deg > 22.5) return 'NE';
+    return 'N';
+}
+
+export const getDayDate = (date) => {
+    return new Date(date).toLocaleDateString("en-GB", { // you can use undefined as first argument
+        month: "2-digit",
+        day: "2-digit",
+    })
+}
+
+export const getWeekDay = (date) => {
+    return new Date(date).toLocaleDateString("en-GB", {
+        weekday: "short",
+    })
+}
+
+export const getToday = (date) => {
+    return new Date().getDate() === new Date(date).getDate();
+}
+
 export const getWeatherIcon = (weatherCode, time) => {
     const daytime = getIsDay(time);
     return daytime ? dayWeatherImages[weatherCode] : nightWeatherImages[weatherCode];

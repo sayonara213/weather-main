@@ -3,6 +3,8 @@ import {CityList, InputField, InputForm, InputWrap} from "./input.style";
 import {getCity, getWeather} from "../../../service";
 import {CityItem} from "./city-item/city-item";
 import {useDispatch, useSelector} from "react-redux";
+import {setCityInfo, setLastSearch} from "../../../redux/citySlice";
+import {setWeather} from "../../../redux/weatherSlice";
 
 export const Input = () => {
 
@@ -14,9 +16,11 @@ export const Input = () => {
 
     const dispatch = useDispatch();
 
-    const cityInfo = useSelector(state => state.cityInfo);
+    const cityInfo = useSelector(state => state.city.cityInfo);
 
-    const lastSearch = useSelector(state => state.lastSearch);
+    const lastSearch = useSelector(state => state.city.lastSearch);
+
+    const temperature = useSelector(state => state.settings.celsius);
 
     useEffect(() => {
         if (city.length > 2) {
@@ -35,12 +39,16 @@ export const Input = () => {
         setCity(event.target.value)
     }
 
+    const switchShowCity = () => {
+        setShowCity(!showCity)
+    }
+
     const handleShowCity = async (city) => {
         setShowCity(false)
-        dispatch({type: 'SET_LAST_SEARCH', payload: cityInfo})
-        await getWeather(city.latitude, city.longitude).then(res => {
-            dispatch({type: 'SET_WEATHER', payload: res.data})
-            dispatch({type: 'SET_CITY_INFO', payload: city})
+        dispatch(setLastSearch(cityInfo))
+        await getWeather(city.latitude, city.longitude, temperature).then(res => {
+            dispatch(setWeather(res.data))
+            dispatch(setCityInfo(city))
         })
     }
 
@@ -50,7 +58,7 @@ export const Input = () => {
                 <InputField
                     placeholder={"Search for city"}
                     onChange={handleChange}
-                    onClick={() => setShowCity(true)}
+                    onClick={switchShowCity}
                 ></InputField>
             </InputForm>
             {showCity ?

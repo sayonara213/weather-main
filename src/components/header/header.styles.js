@@ -17,6 +17,10 @@ export const HeaderWrap = styled.div`
 
     flex-direction: row;
   }
+  
+  & > * {
+    cursor: pointer;
+  }
 `;
 
 export const HeaderIcon = styled.img`
@@ -27,9 +31,13 @@ export const HeaderIcon = styled.img`
   object-fit: contain;
 `;
 
-export const HeaderButton = styled.img`
+export const HeaderButton = styled.p`
   margin: 10px;
-  width: 50px;
+  line-height: 0.75;
+  
   height: 50px;
-  object-fit: contain;
+  width: 50px;
+  color: ${props => props.theme.colors.text};
+  font-size: 50px;
+  font-family: ${props => props.theme.font.bold};
 `;

@@ -12,7 +12,7 @@ import {useSelector} from "react-redux";
 
 export const WeatherToday = () => {
 
-    const weatherToday = useSelector(state => state.cityWeather.hourly);
+    const weatherToday = useSelector(state => state.weather.cityWeather.hourly);
 
     return (
         <SectionWrap>

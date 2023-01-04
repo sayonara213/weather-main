@@ -19,7 +19,6 @@ export const WeatherTextWrap = styled.div`
 `;
 
 export const WeatherNowCity = styled.h1`
-  margin: 0 0 10px 10px;
   font-size: ${props => props.theme.fontSize.city};
   color: ${props => props.theme.colors.text};
   font-family: ${props => props.theme.font.bold};
@@ -27,6 +26,22 @@ export const WeatherNowCity = styled.h1`
   @media (max-width: 992px) {
     font-size: ${props => props.theme.fontSize.cityPhone};
   }
+`;
+
+export const WeatherNowCountry = styled.p`
+  margin: 5px 0 0 2px;
+  
+  font-size: ${props => props.theme.fontSize.medium};
+  color: ${props => props.theme.colors.grey};
+  font-family: ${props => props.theme.font.bold};
+`;
+
+export const WeatherNowCityWrap = styled.div`
+  margin: 0 0 10px 10px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const WeatherNowRain = styled.p`
@@ -53,6 +68,8 @@ export const WeatherNowIcon = styled.img`
 `;
 
 export const CountryWrap = styled.div`
+  margin: 0 0 10px 0;
+  
   display: flex;
   flex-direction: row;
   align-items: center;

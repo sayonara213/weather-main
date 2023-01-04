@@ -8,7 +8,7 @@ import {SwiperSlide, Swiper} from "swiper/react";
 
 export const WeatherWeekly = () => {
 
-    const weekWeather = useSelector(state => state.cityWeather.daily);
+    const weekWeather = useSelector(state => state.weather.cityWeather.daily);
     const weekDay = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
     return (

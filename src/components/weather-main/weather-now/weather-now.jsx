@@ -1,7 +1,7 @@
 import React from "react";
 import {
     CountryWrap, IconWrap,
-    WeatherNowCity,
+    WeatherNowCity, WeatherNowCityWrap, WeatherNowCountry,
     WeatherNowIcon,
     WeatherNowRain,
     WeatherNowTemp,
@@ -14,15 +14,18 @@ import {CircleFlag} from "react-circle-flags";
 
 export const WeatherNow = () => {
 
-    const weather = useSelector(state => state.cityWeather);
-    const city = useSelector(state => state.cityInfo);
+    const weather = useSelector(state => state.weather.cityWeather);
+    const city = useSelector(state => state.city.cityInfo);
 
     return (
         <WeatherNowWrap>
             <WeatherTextWrap>
                 <CountryWrap>
                     <CircleFlag countryCode={city.country_code.toLowerCase()} height="35"/>
-                    <WeatherNowCity>{city.name + ", " + city.country}</WeatherNowCity>
+                    <WeatherNowCityWrap>
+                        <WeatherNowCity>{city.name}</WeatherNowCity>
+                        <WeatherNowCountry>{city.country}</WeatherNowCountry>
+                    </WeatherNowCityWrap>
                 </CountryWrap>
                 <WeatherNowRain>Wind speed: {weather.current_weather.windspeed} m/s</WeatherNowRain>
                 <WeatherNowTemp>{parseInt(weather.current_weather.temperature) + `°`}</WeatherNowTemp>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const WeatherWeeklyWrap = styled.div`
-  padding: 0 20px;
   margin: 0;
   width: 30%;
   height: 860px;
