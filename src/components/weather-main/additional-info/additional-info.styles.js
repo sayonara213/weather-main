@@ -1,27 +1,31 @@
 import styled from "styled-components";
 
 export const AirWrap = styled.div`
-  margin: 18px;
-  
+  margin: 0 18px;
   display: flex;
   flex-direction: column;
   
   @media (max-width: 768px) {
     margin-top: 5px;
   }
+  @media (max-width: 576px) {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 150px;
+  }
 `;
 
 export const TextWrap = styled.div`
-  height: 70px;
+  margin-bottom: 10px;
+  
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+  flex-direction: column;
 `;
 
 export const AddWrap = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const AirTextBig = styled.h1`
@@ -34,13 +38,21 @@ export const AirTextBig = styled.h1`
 `;
 
 export const AirTextSmall = styled.p`
+  margin-left: 50px;
   color: ${props => props.theme.colors.text};
-  font-size: ${props => props.theme.fontSize.medium};
+  font-size: ${props => props.theme.fontSize.large};
   font-family: ${props => props.theme.font.bold};
   font-weight: ${props => props.theme.fontWeight.bold};
 `;
 
 export const AirIcon = styled.img`
-    width: 50px;
-    height: auto;
+  width: 40px;
+  height: auto;
+`;
+
+export const SectionName = styled.div`
+  display: flex;
+  flex-direction: row;
+  
+  align-items: center;
 `;

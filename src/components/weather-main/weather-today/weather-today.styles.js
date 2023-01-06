@@ -9,8 +9,8 @@ export const SectionWrap = styled.div`
   background-color: ${props => props.theme.colors.background};
   border-radius: ${props => props.theme.borderRadius.medium};
 
-  @media (max-width: 992px) {
-    height: 231px;
+  @media (max-width: 576px) {
+    height: 232px;
   }
 `;
 

@@ -63,7 +63,7 @@ export const WeatherNowIcon = styled.img`
   max-width: 70%;
   height: auto;
   @media (max-width: 992px) {
-    max-width: 100%;
+    max-width: 80%;
   }
 `;
 

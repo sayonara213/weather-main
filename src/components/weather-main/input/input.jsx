@@ -30,8 +30,11 @@ export const Input = () => {
                         setCityList(res.data.results)
                     }
                 })
+                setShowCity(true)
             }, 1000)
             return () => clearTimeout(delayRequest)
+        } else {
+            setShowCity(false)
         }
     }, [city])
 
@@ -62,7 +65,8 @@ export const Input = () => {
                 ></InputField>
             </InputForm>
             {showCity ?
-                <CityList>
+                <CityList
+                onClick={switchShowCity}>
                     {Object.keys(lastSearch).length > 0 ? <CityItem city={lastSearch} click={() => handleShowCity(lastSearch)} lastSearch={true}/> : null}
                     {cityList.map((item, index) => (
                         <CityItem city={item} key={index} click={() => handleShowCity(item)}/>

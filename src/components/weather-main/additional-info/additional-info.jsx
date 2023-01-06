@@ -1,5 +1,5 @@
 import React from "react";
-import {AddWrap, AirIcon, AirTextBig, AirTextSmall, AirWrap, TextWrap} from "./additional-info.styles";
+import {AddWrap, AirIcon, AirTextBig, AirTextSmall, AirWrap, SectionName, TextWrap} from "./additional-info.styles";
 import {PlainText, SectionWrap} from "../weather-today/weather-today.styles";
 import {useSelector} from "react-redux";
 import {IMAGES} from "../../../constants/images";
@@ -32,12 +32,15 @@ export const AdditionalInfo = () => {
                         slidesPerView: 2,
                     },
                     640: {
-                        slidesPerView: 1,
+                        slidesPerView: 2,
                     },
                     576: {
-                        slidesPerView: 1,
+                        slidesPerView: 2,
                     },
                     375: {
+                        slidesPerView: 1,
+                    },
+                    0: {
                         slidesPerView: 1,
                     }
                 }}
@@ -46,27 +49,35 @@ export const AdditionalInfo = () => {
                     <SwiperSlide>
                         <AirWrap>
                             <TextWrap>
-                                <AirIcon src={themeNow ? IMAGES.sunriseDark : IMAGES.sunriseLight}/>
-                                <AirTextBig>Sunrise:</AirTextBig>
-                                <AirTextSmall>{new Date(additionalInfo.sunrise).getHours()}:{new Date(additionalInfo.sunrise).getMinutes()}</AirTextSmall>
+                                <SectionName>
+                                    <AirIcon src={themeNow ? IMAGES.sunriseDark : IMAGES.sunriseLight}/>
+                                    <AirTextBig>Sunrise</AirTextBig>
+                                </SectionName>
+                                <AirTextSmall>{('0' + new Date(additionalInfo.sunrise).getHours()).slice(-2)}:{('0' + new Date(additionalInfo.sunrise).getMinutes()).slice(-2)}</AirTextSmall>
                             </TextWrap>
                             <TextWrap>
-                                <AirIcon src={themeNow ? IMAGES.sunsetDark : IMAGES.sunsetLight}/>
-                                <AirTextBig>Sunset:</AirTextBig>
-                                <AirTextSmall>{new Date(additionalInfo.sunset).getHours()}:{new Date(additionalInfo.sunset).getMinutes()}</AirTextSmall>
+                                <SectionName>
+                                    <AirIcon src={themeNow ? IMAGES.sunsetDark : IMAGES.sunsetLight}/>
+                                    <AirTextBig>Sunset</AirTextBig>
+                                </SectionName>
+                                <AirTextSmall>{('0' + new Date(additionalInfo.sunset).getHours()).slice(-2)}:{('0' + new Date(additionalInfo.sunset).getMinutes()).slice(-2)}</AirTextSmall>
                             </TextWrap>
                         </AirWrap>
                     </SwiperSlide>
                     <SwiperSlide>
                         <AirWrap>
                             <TextWrap>
-                                <AirIcon src={themeNow ? IMAGES.precipitationDark : IMAGES.precipitationLight}/>
-                                <AirTextBig>Precipitation:</AirTextBig>
-                                <AirTextSmall>{additionalInfo.precipitation_sum} mm</AirTextSmall>
+                                <SectionName>
+                                    <AirIcon src={themeNow ? IMAGES.precipitationDark : IMAGES.precipitationLight}/>
+                                    <AirTextBig>Precipitation</AirTextBig>
+                                </SectionName>
+                                <AirTextSmall>{additionalInfo.precipitation} mm</AirTextSmall>
                             </TextWrap>
                             <TextWrap>
-                                <AirIcon src={themeNow ? IMAGES.directionDark : IMAGES.directionLight}/>
-                                <AirTextBig>Wind direction:</AirTextBig>
+                                <SectionName>
+                                    <AirIcon src={themeNow ? IMAGES.directionDark : IMAGES.directionLight}/>
+                                    <AirTextBig>Wind direction</AirTextBig>
+                                </SectionName>
                                 <AirTextSmall>{getDirection(additionalInfo.windDirection)}</AirTextSmall>
                             </TextWrap>
                         </AirWrap>

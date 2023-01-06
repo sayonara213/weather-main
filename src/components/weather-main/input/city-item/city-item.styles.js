@@ -2,8 +2,6 @@ import styled from "styled-components";
 import {theme} from "../../../../constants/theme";
 
 export const CityWrap = styled.div`
-  padding: 0 15px;
-  
   width: 50%;
   height: 50px;
   display: flex;
@@ -25,10 +23,19 @@ export const CityWrap = styled.div`
     border-radius: 0 0 ${props => props.theme.borderRadius.medium} ${props => props.theme.borderRadius.medium};
   }
   
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+  
+  img {
+    margin: 0 15px;
+  }
+  
 `;
 
 export const CityText = styled.p`
-  margin: 0 15px;
+  margin-right: 15px;
+  
   color: ${props => props.theme.colors.text};
   user-select: none;
   font-family: ${props => props.theme.font.bold};
