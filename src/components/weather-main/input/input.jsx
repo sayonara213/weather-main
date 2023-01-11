@@ -1,8 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {CityList, InputField, InputForm, InputWrap} from "./input.style";
-import {getCity, getWeather} from "../../../service";
+import {useDispatch, useSelector} from "react-redux";
+
 import {CityItem} from "./city-item/city-item";
-import {useDispatch} from "react-redux";
+
+import {getCity, getWeather} from "../../../service";
+import {setCityInfo, setLastSearch} from "../../../redux/citySlice";
+import {setWeather} from "../../../redux/weatherSlice";
+
+import {CityList, InputField, InputForm, InputWrap} from "./input.style";
 
 export const Input = () => {
 
@@ -14,16 +19,31 @@ export const Input = () => {
 
     const dispatch = useDispatch();
 
+    const cityInfo = useSelector(state => state.city.cityInfo);
+
+    const lastSearch = useSelector(state => state.city.lastSearch);
+
+    const temperature = useSelector(state => state.settings.celsius);
+
     useEffect(() => {
+        console.log("Input effect ran")
         if (city.length > 2) {
             const delayRequest = setTimeout(async () => {
+                console.log("Timeout effect ran")
                 await getCity(city).then(res => {
-                    if(Object.keys(res.data).length === 2) {
+                    if (Object.keys(res.data).length === 2) {
                         setCityList(res.data.results)
                     }
                 })
+                setShowCity(true)
             }, 1000)
-            return () => clearTimeout(delayRequest)
+            return () => {
+                console.log("Timeout effect cleared")
+                clearTimeout(delayRequest)
+            }
+        } else {
+            setCityList([])
+            setShowCity(false)
         }
     }, [city])
 
@@ -31,29 +51,37 @@ export const Input = () => {
         setCity(event.target.value)
     }
 
+    const switchShowCity = () => {
+        setShowCity(!showCity)
+    }
+
     const handleShowCity = async (city) => {
         setShowCity(false)
-        await getWeather(city.latitude, city.longitude).then(res => {
-            dispatch({type: 'SET_WEATHER', payload: res.data})
-            dispatch({type: 'SET_CITY_INFO', payload: city})
+        dispatch(setLastSearch(cityInfo))
+        await getWeather(city.latitude, city.longitude, temperature).then(res => {
+            dispatch(setWeather(res.data))
+            dispatch(setCityInfo(city))
         })
     }
 
-    return(
+    return (
         <InputWrap>
             <InputForm>
                 <InputField
                     placeholder={"Search for city"}
                     onChange={handleChange}
-                    onMouseDown={() => setShowCity(true)}
+                    onClick={switchShowCity}
+                    onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
                 ></InputField>
             </InputForm>
             {showCity ?
-            <CityList>
-                {cityList.map((item, index) => (
-                    <CityItem city={item} key={index} click={() => handleShowCity(item)}/>
-                ))}
-            </CityList> : null}
+                <CityList
+                onClick={switchShowCity}>
+                    {Object.keys(lastSearch).length > 0 ? <CityItem city={lastSearch} click={() => handleShowCity(lastSearch)} lastSearch={true}/> : null}
+                    {cityList.map((item, index) => (
+                        <CityItem city={item} key={index} click={() => handleShowCity(item)}/>
+                    ))}
+                </CityList> : null}
         </InputWrap>
 
     );

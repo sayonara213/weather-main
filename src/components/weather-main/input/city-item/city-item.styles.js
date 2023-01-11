@@ -1,34 +1,42 @@
 import styled from "styled-components";
-import {theme} from "../../../../const/theme";
+import {theme} from "../../../../constants/theme";
 
 export const CityWrap = styled.div`
-  padding: 0 15px;
-  
   width: 50%;
   height: 50px;
   display: flex;
   align-items: center;
   
-  background-color: ${theme.colors.background};
+  background-color: ${props => props.theme.colors.background};
   overflow: hidden;
   transition: 0.2s ease-in-out;
   &:hover {
-    background-color: ${theme.colors.grey};
+    background-color: ${props => props.theme.colors.grey};
   }
   
   cursor: pointer;
   
   &:first-child {
-    border-radius: ${theme.borderRadius.medium} ${theme.borderRadius.medium} 0 0;
+    border-radius: ${props => props.theme.borderRadius.medium} ${props => props.theme.borderRadius.medium} 0 0;
   }
   &:last-child {
-    border-radius: 0 0 ${theme.borderRadius.medium} ${theme.borderRadius.medium};
+    border-radius: 0 0 ${props => props.theme.borderRadius.medium} ${props => props.theme.borderRadius.medium};
+  }
+  
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+  
+  img {
+    margin: 0 15px;
   }
   
 `;
 
 export const CityText = styled.p`
-  margin: 0 15px;
+  margin-right: 15px;
   
+  color: ${props => props.theme.colors.text};
   user-select: none;
+  font-family: ${props => props.theme.font.bold};
 `;

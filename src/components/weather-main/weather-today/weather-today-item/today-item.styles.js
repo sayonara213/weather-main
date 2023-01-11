@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {theme} from "../../../../const/theme";
+import {theme} from "../../../../constants/theme";
 
 export const TodayItemWrap = styled.div`
     margin-bottom: 30px;
@@ -8,14 +8,18 @@ export const TodayItemWrap = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+  
+    border-right: 1px solid ${props => props.theme.colors.border};
+    margin-right: -2px;
 `;
 
 export const TodayTime = styled.p`
   margin: 0;
   
-  font-size: ${theme.fontSize.medium};
-  font-weight: ${theme.fontWeight.bold};
-  color: ${theme.colors.grey};
+  font-size: ${props => props.theme.fontSize.medium};
+  font-weight: ${props => props.theme.fontWeight.bold};
+  color: ${props => props.theme.colors.grey};
+  font-family: ${props => props.theme.font.bold};
 `;
 
 export const TodayIcon = styled.img`
@@ -26,7 +30,8 @@ export const TodayIcon = styled.img`
 
 export const TodayTemp = styled.p`
   margin: 0;
-  font-size: ${theme.fontSize.large};
-  font-weight: ${theme.fontWeight.bold};
-  color: ${theme.colors.text};
+  font-size: ${props => props.theme.fontSize.large};
+  font-weight: ${props => props.theme.fontWeight.bold};
+  color: ${props => props.theme.colors.text};
+  font-family: ${props => props.theme.font.bold};
 `;

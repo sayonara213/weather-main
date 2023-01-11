@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import {css} from "styled-components";
 
 export const normalize = css`
   html {
@@ -178,5 +178,9 @@ export const normalize = css`
 
   [hidden] {
     display: none;
+  }
+  
+  p {
+    user-select: none;
   }
 `;

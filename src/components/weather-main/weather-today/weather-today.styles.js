@@ -1,26 +1,23 @@
 import styled from "styled-components";
-import {theme} from "../../../const/theme";
+import {theme} from "../../../constants/theme";
 
 export const SectionWrap = styled.div`
-  margin: 10px 0;
+  margin: 10px 0 0 0;
   width: 100%;
-  
-  background-color: ${theme.colors.background};
-  border-radius: ${theme.borderRadius.medium};
+  height: 265px;
+
+  background-color: ${props => props.theme.colors.background};
+  border-radius: ${props => props.theme.borderRadius.medium};
+
+  @media (max-width: 576px) {
+    height: 232px;
+  }
 `;
 
 export const PlainText = styled.p`
   margin: 20px;
-  font-size: ${theme.fontSize.small};
-  font-weight: ${theme.fontWeight.bold};
-  color: ${theme.colors.grey};
-
-`;
-
-export const TodayWrap = styled.div`
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 90%;
+  font-size: ${props => props.theme.fontSize.small};
+  font-weight: ${props => props.theme.fontWeight.bold};
+  color: ${props => props.theme.colors.grey};
+  font-family: ${props => props.theme.font.bold};
 `;
