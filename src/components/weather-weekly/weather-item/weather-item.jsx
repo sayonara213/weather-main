@@ -11,7 +11,7 @@ export const DayWeather = (props) => {
                 <WeekDay>{props.index === 0 ? "Today" : getWeekDay(props.weather.time[props.index])}</WeekDay>
                 <WeekDate>{getDayDate(props.weather.time[props.index])}</WeekDate>
             </AdaptContainer>
-            <WeatherIcon src={getWeatherIcon(props.weather.weathercode[props.index], "")}></WeatherIcon>
+            <WeatherIcon src={getWeatherIcon(props.weather.weathercode[props.index], "")} alt={""}></WeatherIcon>
             <Temperature>{parseInt(props.weather.temperature_2m_max[props.index])}°/{parseInt(props.weather.temperature_2m_min[props.index])}°
             </Temperature>
         </WeekDayWeather>

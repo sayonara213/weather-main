@@ -17,7 +17,9 @@ export const TodayItem = (props) => {
         <TodayItemWrap>
             <TodayTime>{getTime(weather.time[props.weatherIndex])}</TodayTime>
             <TodayIcon
-                src={getWeatherIcon(weather.weathercode[props.weatherIndex], weather.time[props.weatherIndex])}></TodayIcon>
+                src={getWeatherIcon(weather.weathercode[props.weatherIndex], weather.time[props.weatherIndex])}
+                alt={""}
+            />
             <TodayTemp>{`${parseInt(weather.temperature_2m[props.weatherIndex])}°`}</TodayTemp>
         </TodayItemWrap>
     );

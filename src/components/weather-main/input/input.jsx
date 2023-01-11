@@ -26,8 +26,10 @@ export const Input = () => {
     const temperature = useSelector(state => state.settings.celsius);
 
     useEffect(() => {
+        console.log("Input effect ran")
         if (city.length > 2) {
             const delayRequest = setTimeout(async () => {
+                console.log("Timeout effect ran")
                 await getCity(city).then(res => {
                     if (Object.keys(res.data).length === 2) {
                         setCityList(res.data.results)
@@ -35,8 +37,12 @@ export const Input = () => {
                 })
                 setShowCity(true)
             }, 1000)
-            return () => clearTimeout(delayRequest)
+            return () => {
+                console.log("Timeout effect cleared")
+                clearTimeout(delayRequest)
+            }
         } else {
+            setCityList([])
             setShowCity(false)
         }
     }, [city])

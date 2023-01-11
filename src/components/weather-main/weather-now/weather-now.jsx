@@ -23,7 +23,7 @@ export const WeatherNow = () => {
         <WeatherNowWrap>
             <WeatherTextWrap>
                 <CountryWrap>
-                    <CircleFlag countryCode={city.country_code.toLowerCase()} height="35"/>
+                    <CircleFlag countryCode={city.country_code.toLowerCase()} height="35" alt={""}/>
                     <WeatherNowCityWrap>
                         <WeatherNowCity>{city.name}</WeatherNowCity>
                         <WeatherNowCountry>{city.country}</WeatherNowCountry>
@@ -34,7 +34,9 @@ export const WeatherNow = () => {
             </WeatherTextWrap>
             <IconWrap>
                 <WeatherNowIcon
-                    src={getWeatherIcon(weather.current_weather.weathercode, weather.current_weather.time)}/>
+                    src={getWeatherIcon(weather.current_weather.weathercode, weather.current_weather.time)}
+                    alt={""}
+                />
             </IconWrap>
         </WeatherNowWrap>
     );

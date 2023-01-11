@@ -36,6 +36,8 @@ export const Main = () => {
     }
 
     useEffect(() => {
+        console.log("Starting app effect ran")
+
         if(JSON.parse(localStorage.getItem("persistantState")).settings.lightTheme !== themeNow){
             dispatch(switchTheme())
         }

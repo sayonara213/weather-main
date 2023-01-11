@@ -63,13 +63,13 @@ const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: "bold";
     src: url(${main});
+    font-display: swap;
   }
 
   ${normalize}
   ${reset}
   
   body {
-    transition: 250ms;
     background-color: ${props => props.theme === "light" ? light.colors.document : dark.colors.document};
   }
 `;

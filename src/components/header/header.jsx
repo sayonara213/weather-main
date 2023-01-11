@@ -39,9 +39,9 @@ export const Header = (props) => {
 
     return (
         <HeaderWrap>
-            <HeaderIcon src={IMAGES.logo}/>
-            <HeaderIcon src={themeNow ? IMAGES.lightMode : IMAGES.darkMode} onClick={handleTheme}/>
-            <HeaderIcon src={themeNow ? IMAGES.locationDark : IMAGES.locationLight} onClick={props.location}/>
+            <HeaderIcon src={IMAGES.logo} alt={""}/>
+            <HeaderIcon src={themeNow ? IMAGES.lightMode : IMAGES.darkMode} onClick={handleTheme} alt={""}/>
+            <HeaderIcon src={themeNow ? IMAGES.locationDark : IMAGES.locationLight} onClick={props.location} alt={""}/>
             <HeaderButton onClick={handleTemperature}>{celsius ? "°C" : "°F"}</HeaderButton>
         </HeaderWrap>
     )
