@@ -1,6 +1,7 @@
 import React from "react";
-import {CityText, CityWrap} from "./city-item.styles";
 import {CircleFlag} from 'react-circle-flags'
+
+import {CityText, CityWrap} from "./city-item.styles";
 
 export const CityItem = (props) => {
     return (

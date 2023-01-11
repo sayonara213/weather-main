@@ -1,6 +1,8 @@
 import React from "react";
-import {AdaptContainer, Temperature, WeatherIcon, WeekDate, WeekDay, WeekDayWeather} from "./weather-item.styles";
+
 import {getDayDate, getWeatherIcon, getWeekDay} from "../../../constants/weather-images";
+
+import {AdaptContainer, Temperature, WeatherIcon, WeekDate, WeekDay, WeekDayWeather} from "./weather-item.styles";
 
 export const DayWeather = (props) => {
     return (

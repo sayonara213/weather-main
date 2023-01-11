@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {CityList, InputField, InputForm, InputWrap} from "./input.style";
-import {getCity, getWeather} from "../../../service";
-import {CityItem} from "./city-item/city-item";
 import {useDispatch, useSelector} from "react-redux";
+
+import {CityItem} from "./city-item/city-item";
+
+import {getCity, getWeather} from "../../../service";
 import {setCityInfo, setLastSearch} from "../../../redux/citySlice";
 import {setWeather} from "../../../redux/weatherSlice";
+
+import {CityList, InputField, InputForm, InputWrap} from "./input.style";
 
 export const Input = () => {
 
@@ -62,6 +65,7 @@ export const Input = () => {
                     placeholder={"Search for city"}
                     onChange={handleChange}
                     onClick={switchShowCity}
+                    onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
                 ></InputField>
             </InputForm>
             {showCity ?

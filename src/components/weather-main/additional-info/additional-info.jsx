@@ -1,11 +1,14 @@
 import React from "react";
+import {useSelector} from "react-redux";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Keyboard, Mousewheel, Pagination} from "swiper";
+
+import {getDirection} from "../../../constants/weather-images";
+
+import {IMAGES} from "../../../constants/images";
+
 import {AddWrap, AirIcon, AirTextBig, AirTextSmall, AirWrap, SectionName, TextWrap} from "./additional-info.styles";
 import {PlainText, SectionWrap} from "../weather-today/weather-today.styles";
-import {useSelector} from "react-redux";
-import {IMAGES} from "../../../constants/images";
-import {Keyboard, Mousewheel, Navigation, Pagination} from "swiper";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {getDirection} from "../../../constants/weather-images";
 
 export const AdditionalInfo = () => {
 

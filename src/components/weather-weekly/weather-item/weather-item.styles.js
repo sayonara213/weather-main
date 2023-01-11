@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import {theme} from "../../../constants/theme";
 
 export const WeekDayWeather = styled.div`
-  margin: 0 20px 20px 0;
+  margin: 0 10px 20px 10px;
   
   display: flex;
   flex-direction: row;

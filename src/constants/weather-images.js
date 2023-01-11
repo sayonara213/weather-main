@@ -111,10 +111,6 @@ export const getWeekDay = (date) => {
     })
 }
 
-export const getToday = (date) => {
-    return new Date().getDate() === new Date(date).getDate();
-}
-
 export const getWeatherIcon = (weatherCode, time) => {
     const daytime = getIsDay(time);
     return daytime ? dayWeatherImages[weatherCode] : nightWeatherImages[weatherCode];

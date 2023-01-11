@@ -1,10 +1,13 @@
-import React, {useEffect, useState} from "react";
-import {HeaderButton, HeaderIcon, HeaderWrap} from "./header.styles";
-import {IMAGES} from "../../constants/images";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
+
 import {getWeather} from "../../service";
 import {switchCelsius, switchTheme} from "../../redux/settingsSlice";
 import {setWeather} from "../../redux/weatherSlice";
+
+import {IMAGES} from "../../constants/images";
+
+import {HeaderButton, HeaderIcon, HeaderWrap} from "./header.styles";
 
 export const Header = (props) => {
 

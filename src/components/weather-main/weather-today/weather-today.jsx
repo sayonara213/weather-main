@@ -1,14 +1,14 @@
 import React from "react";
-import {PlainText, SectionWrap} from "./weather-today.styles";
+import {useSelector} from "react-redux";
+import {Swiper, SwiperSlide} from 'swiper/react';
+
 import {TodayItem} from "./weather-today-item/today-item";
 
 import {Mousewheel, Keyboard} from "swiper";
 
-import {Swiper, SwiperSlide} from 'swiper/react';
-
+import {PlainText, SectionWrap} from "./weather-today.styles";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
-import {useSelector} from "react-redux";
 
 export const WeatherToday = () => {
 
@@ -44,8 +44,7 @@ export const WeatherToday = () => {
                     }
                 }}
             >
-                {weatherToday.time.map((item, index) => {
-                    if (index > 24) return;
+                {weatherToday.time.slice(0, 24).map((item, index) => {
                     return (
                         <SwiperSlide key={index}>
                             <TodayItem weatherIndex={index}/>

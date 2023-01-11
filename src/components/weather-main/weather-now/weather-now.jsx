@@ -1,4 +1,7 @@
 import React from "react";
+import {useSelector} from "react-redux";
+import {CircleFlag} from "react-circle-flags";
+
 import {
     CountryWrap, IconWrap,
     WeatherNowCity, WeatherNowCityWrap, WeatherNowCountry,
@@ -8,9 +11,8 @@ import {
     WeatherNowWrap,
     WeatherTextWrap
 } from "./weather-now.styles";
+
 import {getWeatherIcon} from "../../../constants/weather-images";
-import {useSelector} from "react-redux";
-import {CircleFlag} from "react-circle-flags";
 
 export const WeatherNow = () => {
 

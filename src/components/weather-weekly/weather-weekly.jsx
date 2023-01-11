@@ -1,10 +1,13 @@
 import React from "react";
-import {WeatherWeeklyWrap} from "./weather-weekly.styles";
-import {DayWeather} from "./weather-item/weather-item";
 import {useSelector} from "react-redux";
-import {PlainText} from "../weather-main/weather-today/weather-today.styles";
+
 import {Keyboard, Mousewheel} from "swiper";
 import {SwiperSlide, Swiper} from "swiper/react";
+
+import {DayWeather} from "./weather-item/weather-item";
+
+import {PlainText} from "../weather-main/weather-today/weather-today.styles";
+import {WeatherWeeklyWrap} from "./weather-weekly.styles";
 
 export const WeatherWeekly = () => {
 

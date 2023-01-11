@@ -1,13 +1,18 @@
 import React, {useEffect, useState} from "react";
-import {WeatherWrap} from "./main.styles";
-import {WeatherMain} from "../weather-main/weather-main";
-import {getCity, getUserCity, getWeather} from "../../service";
 import {useDispatch, useSelector} from "react-redux";
+
+import {WeatherMain} from "../weather-main/weather-main";
 import {WeatherWeekly} from "../weather-weekly/weather-weekly";
 import {Header} from "../header/header";
-import {Theme} from "../../constants/theme";
+
+import {getCity, getUserCity, getWeather} from "../../service";
 import {setCityInfo} from "../../redux/citySlice";
 import {setWeather} from "../../redux/weatherSlice";
+import {switchTheme} from "../../redux/settingsSlice";
+
+import {Theme} from "../../constants/theme";
+
+import {WeatherWrap} from "./main.styles";
 
 export const Main = () => {
 
@@ -31,7 +36,10 @@ export const Main = () => {
     }
 
     useEffect(() => {
-        defaultCity();
+        if(JSON.parse(localStorage.getItem("persistantState")).settings.lightTheme !== themeNow){
+            dispatch(switchTheme())
+        }
+        defaultCity()
     }, [])
 
     if (isLoading) {
