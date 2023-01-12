@@ -16,6 +16,6 @@ The page will reload when you make changes.\
 
 ## API
 
-Used API from [open-meteo.com](https://open-meteo.com) 
-[Weather Forecast API](https://open-meteo.com/en/docs#latitude=49.91&longitude=24.61&hourly=temperature_2m)
+Used API from [open-meteo.com](https://open-meteo.com) \
+[Weather Forecast API](https://open-meteo.com/en/docs#latitude=49.91&longitude=24.61&hourly=temperature_2m)\
 [Location Geocoding API](https://open-meteo.com/en/docs/geocoding-api)
