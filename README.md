@@ -1,6 +1,6 @@
 # Weather forecast app by Maksym Sai
 
-A web application for viewing weather forecast for ifferent locations. Giving an ability to see current temperature, wind speed / direction, precipitation, and 
+A web application for viewing weather forecast for different locations. Giving an ability to see current temperature, wind speed / direction, precipitation, and 
 a lot more.
 
 ## Available Scripts
