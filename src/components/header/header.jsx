@@ -7,7 +7,8 @@ import {setWeather} from "../../redux/weatherSlice";
 
 import {IMAGES} from "../../constants/images";
 
-import {HeaderButton, HeaderIcon, HeaderWrap} from "./header.styles";
+import {HeaderButton, HeaderIcon, HeaderWrap, ImgContainer} from "./header.styles";
+import {Link} from "react-router-dom";
 
 export const Header = (props) => {
 
@@ -39,10 +40,17 @@ export const Header = (props) => {
 
     return (
         <HeaderWrap>
-            <HeaderIcon src={IMAGES.logo} alt={""}/>
+            <Link to={'/main'}>
+                <HeaderIcon src={IMAGES.logo} alt={""}/>
+            </Link>
             <HeaderIcon src={themeNow ? IMAGES.lightMode : IMAGES.darkMode} onClick={handleTheme} alt={""}/>
             <HeaderIcon src={themeNow ? IMAGES.locationDark : IMAGES.locationLight} onClick={props.location} alt={""}/>
-            <HeaderButton onClick={handleTemperature}>{celsius ? "°C" : "°F"}</HeaderButton>
+            <Link to={'/list'}>
+                <HeaderIcon src={themeNow ? IMAGES.listDark : IMAGES.listLight} alt={""}/>
+            </Link>
+            <ImgContainer>
+                <HeaderButton onClick={handleTemperature}>{celsius ? "°C" : "°F"}</HeaderButton>
+            </ImgContainer>
         </HeaderWrap>
     )
 }

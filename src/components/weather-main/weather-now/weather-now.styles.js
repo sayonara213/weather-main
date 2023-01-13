@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {theme} from "../../../constants/theme";
 
 export const WeatherNowWrap = styled.div`
   margin: 10px 0 0 0;
@@ -10,6 +9,7 @@ export const WeatherNowWrap = styled.div`
   align-items: center;
   width: 90%;
   height: 250px;
+  
 `;
 
 export const WeatherTextWrap = styled.div`
@@ -26,6 +26,8 @@ export const WeatherNowCity = styled.h1`
   @media (max-width: 992px) {
     font-size: ${props => props.theme.fontSize.cityPhone};
   }
+  
+  user-select: none;
 `;
 
 export const WeatherNowCountry = styled.p`
@@ -79,3 +81,10 @@ export const IconWrap = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const SmallIcon = styled.img`
+  object-fit: contain;
+  width: 30px;
+  height: 30px;
+  margin: 0 10px 0 0;
+`

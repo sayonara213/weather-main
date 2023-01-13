@@ -5,8 +5,8 @@ export const WeekDayWeather = styled.div`
   
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
 
   @media (max-width: 992px) {
     flex-direction: column;
@@ -32,7 +32,7 @@ export const Temperature = styled.p`
 
 export const WeatherIcon = styled.img`
   object-fit: contain;
-  margin: 10px 0;
+  margin: 10px;
   width: 75px;
   height: auto;
 `;

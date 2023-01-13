@@ -8,7 +8,7 @@ export const WeatherWrap = styled.div`
   justify-content: center;
 
   @media (max-width: 1500px) {
-    padding: 10px 100px;
+    padding: 10px 20px;
   }
   @media (max-width: 992px) {
     height: auto;

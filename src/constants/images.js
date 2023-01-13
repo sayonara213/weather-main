@@ -11,7 +11,14 @@ import directionLight from '../assets/images/direction-light.png';
 import directionDark from '../assets/images/direction-dark.png';
 import precipitationLight from '../assets/images/precipitation-light.png';
 import precipitationDark from '../assets/images/precipitation-dark.png';
-
+import listLight from '../assets/images/list-light.png';
+import listDark from '../assets/images/list-dark.png';
+import saveLight from '../assets/images/save-light.png';
+import saveDark from '../assets/images/save-dark.png';
+import deleteLight from '../assets/images/delete-light.png';
+import deleteDark from '../assets/images/delete-dark.png';
+import savedLight from '../assets/images/saved-light.png';
+import savedDark from '../assets/images/saved-dark.png';
 
 export const IMAGES = {
     logo,
@@ -27,4 +34,12 @@ export const IMAGES = {
     directionDark,
     precipitationLight,
     precipitationDark,
+    listLight,
+    listDark,
+    saveLight,
+    saveDark,
+    deleteLight,
+    deleteDark,
+    savedLight,
+    savedDark,
 }

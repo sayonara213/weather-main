@@ -10,8 +10,6 @@ import {setCityInfo} from "../../redux/citySlice";
 import {setWeather} from "../../redux/weatherSlice";
 import {switchTheme} from "../../redux/settingsSlice";
 
-import {Theme} from "../../constants/theme";
-
 import {WeatherWrap} from "./main.styles";
 
 export const Main = () => {
@@ -36,12 +34,14 @@ export const Main = () => {
     }
 
     useEffect(() => {
-        console.log("Starting app effect ran")
-
-        if(JSON.parse(localStorage.getItem("persistantState")).settings.lightTheme !== themeNow){
-            dispatch(switchTheme())
+        if(localStorage.hasOwnProperty('persistentState')){
+            if(JSON.parse(localStorage.getItem("persistentState")).settings.lightTheme !== themeNow){
+                dispatch(switchTheme())
+            }
+            setIsLoading(false)
+        } else {
+            defaultCity()
         }
-        defaultCity()
     }, [])
 
     if (isLoading) {
@@ -53,12 +53,10 @@ export const Main = () => {
     }
 
     return (
-        <Theme theme={themeNow}>
-            <WeatherWrap>
-                <Header location={defaultCity}/>
-                <WeatherMain/>
-                <WeatherWeekly/>
-            </WeatherWrap>
-        </Theme>
+        <WeatherWrap>
+            <Header location={defaultCity}/>
+            <WeatherMain/>
+            <WeatherWeekly/>
+        </WeatherWrap>
     );
 }

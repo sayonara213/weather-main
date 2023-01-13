@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderWrap = styled.div`
-  width: 120px;
+  width: 70px;
   height: 860px;
 
   display: flex;
@@ -32,12 +32,15 @@ export const HeaderIcon = styled.img`
 `;
 
 export const HeaderButton = styled.p`
-  margin: 10px;
-  line-height: 0.75;
-  
   height: 50px;
   width: 50px;
   color: ${props => props.theme.colors.text};
   font-size: 50px;
   font-family: ${props => props.theme.font.bold};
+`;
+
+export const ImgContainer = styled.div`
+  margin: 10px;
+  height: 50px;
+  width: 50px;
 `;
